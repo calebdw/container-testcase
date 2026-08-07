@@ -60,7 +60,10 @@
         "test:lint": "pint --test",
         "test:lint-fix": "pint",
         "test:unit": "pest",
-        "test:coverage": "pest --coverage --min=100",
+        "test:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "pest --coverage --min=100"
+        ],
         "test:static": "phpstan",
         "test:all": "composer test:lint && composer test:unit && composer test:coverage && composer test:static"
     }
