@@ -211,7 +211,7 @@ trait InteractsWithContainer
     {
         $container = Mockery::getContainer();
 
-        $this->addToAssertionCount($container->mockery_getExpectationCount());
+        $this->addToAssertionCount(max(0, $container->mockery_getExpectationCount()));
 
         Mockery::close();
     }
