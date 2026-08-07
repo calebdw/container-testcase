@@ -5,6 +5,8 @@ namespace Reedware\ContainerTestCase;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\Container as ContainerContract;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
+use Illuminate\Contracts\Foundation\MaintenanceMode;
+use Illuminate\Support\ServiceProvider;
 
 class Application extends Container implements ApplicationContract
 {
@@ -170,7 +172,7 @@ class Application extends Container implements ApplicationContract
     /**
      * Get an instance of the maintenance mode manager implementation.
      *
-     * @return \Illuminate\Contracts\Foundation\MaintenanceMode
+     * @return MaintenanceMode
      */
     public function maintenanceMode()
     {
@@ -200,9 +202,9 @@ class Application extends Container implements ApplicationContract
     /**
      * Register a service provider with the application.
      *
-     * @param  \Illuminate\Support\ServiceProvider|string  $provider
+     * @param  ServiceProvider|string  $provider
      * @param  bool  $force
-     * @return \Illuminate\Support\ServiceProvider
+     * @return ServiceProvider
      */
     public function register($provider, $force = false)
     {
@@ -225,7 +227,7 @@ class Application extends Container implements ApplicationContract
      * Resolve a service provider instance from the class name.
      *
      * @param  string  $provider
-     * @return \Illuminate\Support\ServiceProvider
+     * @return ServiceProvider
      */
     public function resolveProvider($provider)
     {
@@ -300,8 +302,8 @@ class Application extends Container implements ApplicationContract
     /**
      * Get the registered service provider instances if any exist.
      *
-     * @param  \Illuminate\Support\ServiceProvider|string  $provider
-     * @return array<\Illuminate\Support\ServiceProvider>
+     * @param  ServiceProvider|string  $provider
+     * @return array<ServiceProvider>
      */
     public function getProviders($provider)
     {
@@ -353,7 +355,7 @@ class Application extends Container implements ApplicationContract
      * Register a terminating callback with the application.
      *
      * @param  callable|string  $callback
-     * @return \Illuminate\Contracts\Foundation\Application
+     * @return ApplicationContract
      */
     public function terminating($callback)
     {
